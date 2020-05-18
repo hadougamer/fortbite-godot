@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scene/ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/coelho.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/sky01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/world.gd" type="Script" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="sky01" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8.41882, 8.47235 )
+
+[node name="ground" parent="." instance=ExtResource( 1 )]
+position = Vector2( 6.14673, 4.72998 )
+
+[node name="coelho" parent="." instance=ExtResource( 2 )]
+position = Vector2( 227.215, 476.307 )
