@@ -27,8 +27,8 @@ func _process(delta):
 	# SHOOT
 	if Input.is_action_just_pressed("ui_shoot"):
 		# Bullet number constraint
-		if get_tree().get_nodes_in_group("bullets").size() > 20:
-			return
+		#if get_tree().get_nodes_in_group("bullets").size() > 20:
+		#	return
 			
 		# Instances bullet
 		var bullet = pre_bullet.instance()

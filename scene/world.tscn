@@ -10,7 +10,7 @@ extents = Vector2( 37.2744, 1071.2 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
-num_enemy = 3
+num_enemy = 1
 
 [node name="sky01" parent="." instance=ExtResource( 3 )]
 position = Vector2( 8.41882, 8.47235 )
