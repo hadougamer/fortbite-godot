@@ -17,20 +17,19 @@ func _process(delta):
 	
 	if get_tree().get_nodes_in_group("enemies").size() < num_enemy:
 		var enemy = pre_enemy.instance()
+		
+		# Randomize the position
 		var rnd = randi()%6
-		enemy.scale.x=3
-		enemy.scale.y=3
 		enemy.global_position = $PosEnemy.get_child(rnd).global_position
+		
 		add_child(enemy)
 	
 	# SHOOT
 	if Input.is_action_just_pressed("ui_shoot"):
+		# Bullet number constraint
 		if get_tree().get_nodes_in_group("bullets").size() > 20:
 			return
-		
-		
-		print(get_tree().get_nodes_in_group("bullets").size())
-		
+			
 		# Instances bullet
 		var bullet = pre_bullet.instance()
 		bullet.scale.x=3
@@ -47,5 +46,4 @@ func _process(delta):
 			bullet.global_position=$"player/bulletPositionLeft".global_position
 		
 		# Add the bullet
-		print(bullet)
 		add_child(bullet)	
