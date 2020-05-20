@@ -16,16 +16,22 @@ const DECELERATION = 2000
 const JUMP_FORCE=800
 const GRAVITY=2000
 
-func _ready():
+export(int, "Coelho", "Jonesy") var hero = 1
+var heros = [ "rabbit", "jonesy" ]
+var player
+	
+func _ready():	
+	player = heros[hero]
 	set_process(true)
 	set_process_input(true)
- 
- 
+	
+func _draw():
+	$sprites.animation =  player + "-walk-left"
+
 func _input(event):
 	if event.is_action_pressed("ui_jump"):
 		speed_y = - JUMP_FORCE
- 
- 
+
 func _process(delta):
 	# INPUT
 	if input_direction:
@@ -33,11 +39,11 @@ func _process(delta):
 	
 	if Input.is_action_pressed("ui_left"):
 		curdir="left"
-		$sprites.play("walk-left")
+		$sprites.play(player + "-walk-left")
 		input_direction = -1
 	elif Input.is_action_pressed("ui_right"):
 		curdir="right"
-		$sprites.play("walk-right")
+		$sprites.play(player + "-walk-right")
 		input_direction = 1
 	else:
 		$sprites.stop()
