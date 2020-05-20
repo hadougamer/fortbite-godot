@@ -7,6 +7,7 @@ var speed_x = 0
 var speed_y = 0
 var velocity = Vector2()
 
+var jumping = false
 var curdir="left"
  
 const MAX_SPEED = 600
@@ -29,10 +30,11 @@ func _draw():
 	$sprites.animation =  player + "-walk-left"
 
 func _input(event):
-	if event.is_action_pressed("ui_jump"):
+	if event.is_action_pressed("ui_jump") && !jumping:
 		speed_y = - JUMP_FORCE
+		jumping=true
 
-func _process(delta):
+func _physics_process(delta):
 	# INPUT
 	if input_direction:
 		direction = input_direction
@@ -63,4 +65,8 @@ func _process(delta):
 	velocity.x = speed_x  * direction
 	velocity.y = speed_y 
 	
-	move_and_slide( velocity )
+	var curpos = move_and_slide( velocity )
+
+	# curpos.y == 0 ->> colission
+	if curpos.y == 0 && jumping:
+		jumping = false

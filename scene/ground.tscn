@@ -5,7 +5,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 530.595, 30.4385 )
 
-[node name="ground" type="StaticBody2D"]
+[node name="ground" type="StaticBody2D" groups=[
+"ground",
+]]
 
 [node name="sprites" type="Node2D" parent="."]
 
